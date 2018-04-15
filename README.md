@@ -1,2 +1,2 @@
 # dienlin
-Several functions, mostly for data-wrangling, extracting and reporting statistical results
+Several R-functions, mostly for data-wrangling, extracting and reporting statistical results
