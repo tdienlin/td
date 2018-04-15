@@ -4,7 +4,7 @@ factor_val <- function(object, name,
   # Computes and returns factorial validity of a fitted Model
   
   # DEPENDENCIES
-  packages <- c("semTools", "lavaan")
+  packages <- c("semTools", "lavaan", "magrittr")
   invisible(lapply(packages, library, character.only = TRUE))
   
   # OBJECTS
