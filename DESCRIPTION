@@ -1,0 +1,16 @@
+Package: dienlin
+Title: Functions For Everyday Use
+Version: 0.0.0.9000
+Authors@R: person("Tobias", "Dienlin", email = "tobias.dienlin@uni-hohenheim.de", role = c("aut", "cre"))
+Description: Functions for Data-Wrangling, Extracting and Reporting Statistical Results.
+Depends: R (>= 3.4.2)
+Imports: 
+  lavaan,
+  magrittr,
+  psych,
+  tidyverse,
+  semTools,
+  pwr,
+License: CC0
+Encoding: UTF-8
+LazyData: true
