@@ -2,7 +2,9 @@ scat_plot <- function(data, mapping, coords, ...) {
   # Formats the graphs in zero-order correlation tables.
   
   # Dependency
-  library(ggplot2)
+  # dependencies
+  packages <- c("ggplot2")
+  invisible(lapply(packages, library, character.only = TRUE))
   
   p <- ggplot(data = data, mapping = mapping) +
     theme_bw() +

@@ -1,6 +1,10 @@
 cor_matrix <- function(data, mapping, color = I("black"),
                        sizeRange = c(1, 5), colored = FALSE, ...) {
   
+  # dependencies
+  packages <- c("GGally")
+  invisible(lapply(packages, library, character.only = TRUE))
+  
   # get the x and y data to use the other code
   x <- eval(mapping$x, data)
   y <- eval(mapping$y, data)

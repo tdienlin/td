@@ -2,7 +2,7 @@ my_round <- function(x, what) {
   # Formats results for printing
   
   # DEPENDENCIES
-  library(magrittr)
+  invisible(library(magrittr))
   
   # SUBFUNCTIONS
   rem_kee <- function(x, digits) {

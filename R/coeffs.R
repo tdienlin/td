@@ -4,8 +4,9 @@ coeffs <- function(object, name,
                    wald_z = TRUE) {
   # Outputs regression coefficients from lavaan object
   
-  # DEPENDENCIES
-  invisible(library(lavaan))
+  # dependencies
+  packages <- c("lavaan")
+  invisible(lapply(packages, library, character.only = TRUE))
   
   parameters <- c("lhs", "rhs", "label", "est", "ci.lower", "ci.upper", "z", "pvalue", "pvalue", "std.all")
   col_names <- c("outcome", "predictor", "label", "b", "ll", "ul", "z", "p", "std.all")
