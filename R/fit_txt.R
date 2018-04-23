@@ -1,28 +1,41 @@
-fit_txt <- function(object, WRMR = FALSE, SRMR = TRUE) {
+fit_txt <- function(object, wrmr = FALSE) {
   # function for printing fit of models. 
   # Best used as inline R code-chunk in rmd
   
-  paste0("χ2(", 
-         model_fit["df"], 
-         ") = ", 
-         sprintf("%.2f", model_fit["chisq"]),
-         ", p = ", 
-         model_fit["pvalue"],
-         ", CFI = ", 
-         sprintf("%.2f", model_fit["cfi"]),
-         ", RMSEA = ", 
-         sprintf("%.2f", model_fit["rmsea"]),
-         ", 95% CI [", 
-         sprintf("%.2f", model_fit["rmsea.ci.lower"]),
-         ", ", 
-         model_fit["rmsea.ci.upper"],
-         if(isTRUE(WRMR)) {
+  temp <- if(isTRUE(wrmr)){
+    paste0("χ2(", 
+           object["df"], 
+           ") = ", 
+           sprintf("%.2f", object["chisq"]),
+           ", p = ", 
+           object["pvalue"],
+           ", CFI = ", 
+           sprintf("%.2f", object["cfi"]),
+           ", RMSEA = ", 
+           sprintf("%.2f", object["rmsea"]),
+           ", 95% CI [", 
+           sprintf("%.2f", object["rmsea.ci.lower"]),
+           ", ", 
+           object["rmsea.ci.upper"],
            "], WRMR = ", 
-           model_fit["wrmr"]) %>%
-         } if(isTRUE(SRMR)) {
-           "], WRMR = ", 
-           model_fit["wrmr"]) %>%
-         }
-         
-  return
+           object["wrmr"])
+    } else if(!isTRUE(wrmr)) {
+      paste0("χ2(", 
+             object["df"], 
+             ") = ", 
+             sprintf("%.2f", object["chisq"]),
+             ", p = ", 
+             object["pvalue"],
+             ", CFI = ", 
+             sprintf("%.2f", object["cfi"]),
+             ", RMSEA = ", 
+             sprintf("%.2f", object["rmsea"]),
+             ", 95% CI [", 
+             sprintf("%.2f", object["rmsea.ci.lower"]),
+             ", ", 
+             object["rmsea.ci.upper"],
+             "], SRMR = ", 
+             object["srmr"])
+      }
+  return(temp)
 }
