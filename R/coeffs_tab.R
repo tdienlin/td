@@ -1,12 +1,12 @@
 coeffs_tab <- function(object, name,
                    ci = TRUE, standardized = TRUE, pvalue = TRUE, pvalue_txt = TRUE,
                    save_object = FALSE, print = TRUE, one_tailed = FALSE, hypotheses,
-                   wald_z = TRUE) {
+                   wald_z = TRUE, se = TRUE, manuscript = FALSE) {
   # Outputs regression coefficients from lavaan object
   
-  parameters <- c("lhs", "rhs", "label", "est", "ci.lower", "ci.upper", 
+  parameters <- c("lhs", "rhs", "label", "est", "se", "ci.lower", "ci.upper", 
                   "z", "pvalue", "pvalue", "std.all")
-  col_names <- c("outcome", "predictor", "label", "b", "ll", "ul", 
+  col_names <- c("outcome", "predictor", "label", "b", "se", "ll", "ul", 
                  "z", "p", "std.all")
   
   # Remove parameters if excluced
@@ -30,6 +30,10 @@ coeffs_tab <- function(object, name,
     parameters <- parameters[-grep("z", parameters)]
     col_names <- col_names[-grep("z", col_names)]
   }
+  if(!isTRUE(se)) {
+    parameters <- parameters[-grep("se", parameters)]
+    col_names <- col_names[-grep("se", col_names)]
+  }
   
   temp <- parameterestimates(object, 
                              ci = ci, 
@@ -40,13 +44,17 @@ coeffs_tab <- function(object, name,
     select(parameters) %>%
     as.data.frame() %>%
     set_colnames(col_names) %>%
-    rename(., "p_num" = p) %>%
+    rename(., "p_num" = p)
+  
+  if(isTRUE(manuscript)){
+    temp <- temp %>%
     {if(isTRUE(one_tailed)) mutate(., p_num = ifelse(label %in% hypotheses, p_num / 2, p_num)) else .} %>% 
     {if(isTRUE(pvalue_txt)) mutate_at(., vars("p_txt" = "p_num"), funs(my_round(., "p_txt"))) else .} %>%
     {if(isTRUE(pvalue)) mutate_at(., vars("p" = "p_num"), funs(my_round(., 3))) else .} %>%
-    mutate_at(., vars("b", "ll", "ul", "z"), funs(my_round(., 2))) %>%
-    mutate_at(., vars("beta" = "std.all"), funs(my_round(., "std"))) %>% 
-    select(-std.all)
+      mutate_at(., vars("b", "ll", "ul", "z"), funs(my_round(., 2))) %>%
+      mutate_at(., vars("beta" = "std.all"), funs(my_round(., "std"))) %>% 
+      select(-std.all)  
+  }
   if(isTRUE(save_object)) {assign(x = name, value = temp, envir = .GlobalEnv)}
   if(isTRUE(print)){
     cat("Regression Coefficients:\n\n")

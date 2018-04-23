@@ -1,16 +1,16 @@
 coeffs_txt <- function(object, selection, se = FALSE){
   paste0("(\\textit{b} = ",
-         filter(object, label == selection)$b,
+         round(filter(object, label == selection)$b, 2),
          ", 95% CI [",
-         filter(object, label == selection)$ll,
+         round(filter(object, label == selection)$ll, 2),
          ", ",
-         filter(object, label == selection)$ul,
+         round(filter(object, label == selection)$ul, 2),
          "], \\textit{z} = ",
-         filter(object, label == selection)$z,
+         round(filter(object, label == selection)$z, 2),
          ", \\textit{p} ",
-         filter(object, label == selection)$p_txt,
+         my_round(filter(object, label == selection)$p_num, "p_txt"),
          ", $\\beta$ = ",
-         filter(object, label == selection)$beta,
+         my_round(filter(object, label == selection)$std.all, "std"),
          ")"
   )
 }
