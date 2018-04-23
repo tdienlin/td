@@ -4,7 +4,7 @@ fit_txt <- function(object, wrmr = FALSE) {
   
 
   temp <- if(isTRUE(wrmr)){
-    paste0("χ2(", 
+    paste0("$\\chi^2$(", 
            round(object["df"], 0),
            ") = ", 
            round(object["chisq"], 2),
@@ -22,7 +22,7 @@ fit_txt <- function(object, wrmr = FALSE) {
            ", WRMR = ", 
            my_round(object["wrmr"], "fit"))
     } else if(!isTRUE(wrmr)) {
-      paste0("χ2(", 
+      paste0("$\\chi^2$(", 
              round(object["df"], 0),
              ") = ", 
              round(object["chisq"], 2),
