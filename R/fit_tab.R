@@ -9,7 +9,7 @@ fit_tab <- function(object,
     measures <- c("chisq", "df", "pvalue", "cfi", 
                   "tli", "rmsea")
     fit_tab <- c(fitMeasures(object, fit.measures = measures),
-                 wrmr = calc_wrmr(object))
+                 wrmr = as.numeric(calc_wrmr(object)))
   } else{
     fit_tab <- c(fitMeasures(object, fit.measures = measures))
   }

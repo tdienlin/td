@@ -1,9 +1,6 @@
 my_round <- function(x, what) {
   # Formats results for printing
   
-  # DEPENDENCIES
-  invisible(library(magrittr))
-  
   # SUBFUNCTIONS
   rem_kee <- function(x, digits) {
     # removes leading "0", keeps trailing "0"
