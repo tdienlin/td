@@ -1,4 +1,4 @@
-coeffs <- function(object, name,
+coeffs_tab <- function(object, name,
                    ci = TRUE, standardized = TRUE, pvalue = TRUE, pvalue_txt = TRUE,
                    save_object = FALSE, print = TRUE, one_tailed = FALSE, hypotheses,
                    wald_z = TRUE) {

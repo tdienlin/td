@@ -1,4 +1,4 @@
-coeff_txt <- function(object, selection, se = FALSE){
+coeffs_txt <- function(object, selection, se = FALSE){
   paste0("(\\textit{b} = ",
          filter(object, label == selection)$b,
          ", 95% CI [",
