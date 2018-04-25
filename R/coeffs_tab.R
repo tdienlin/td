@@ -7,7 +7,7 @@ coeffs_tab <- function(object, name,
   parameters <- c("lhs", "rhs", "label", "est", "se", "ci.lower", "ci.upper", 
                   "z", "pvalue", "pvalue", "std.all")
   col_names <- c("outcome", "predictor", "label", "b", "se", "ll", "ul", 
-                 "z", "p", "std.all")
+                 "z", "p", "std")
   
   # Remove parameters if excluced
   if(!isTRUE(pvalue)) {
@@ -43,17 +43,15 @@ coeffs_tab <- function(object, name,
     filter(label != "" & (op == "~" | op == "~~")) %>%
     select(parameters) %>%
     as.data.frame() %>%
-    set_colnames(col_names) %>%
-    rename(., "p_num" = p)
+    set_colnames(col_names)
   
   if(isTRUE(manuscript)){
     temp <- temp %>%
-    {if(isTRUE(one_tailed)) mutate(., p_num = ifelse(label %in% hypotheses, p_num / 2, p_num)) else .} %>% 
-    {if(isTRUE(pvalue_txt)) mutate_at(., vars("p_txt" = "p_num"), funs(my_round(., "p_txt"))) else .} %>%
-    {if(isTRUE(pvalue)) mutate_at(., vars("p" = "p_num"), funs(my_round(., 3))) else .} %>%
+    {if(isTRUE(one_tailed)) mutate(., p_num = ifelse(label %in% hypotheses, p / 2, p)) else .} %>% 
+    {if(isTRUE(pvalue_txt)) mutate_at(., vars("p_txt" = "p"), funs(my_round(., "p_txt"))) else .} %>%
+    {if(isTRUE(pvalue)) mutate_at(., vars("p"), funs(my_round(., 3))) else .} %>%
       mutate_at(., vars("b", "ll", "ul", "z"), funs(my_round(., 2))) %>%
-      mutate_at(., vars("beta" = "std.all"), funs(my_round(., "std"))) %>% 
-      select(-std.all)  
+      mutate_at(., vars("std"), funs(my_round(., "std")))
   }
   if(isTRUE(save_object)) {assign(x = name, value = temp, envir = .GlobalEnv)}
   if(isTRUE(print)){
