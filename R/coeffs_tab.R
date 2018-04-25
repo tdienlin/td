@@ -6,7 +6,7 @@ coeffs_tab <- function(object, name,
   
   parameters <- c("lhs", "rhs", "label", "est", "se", "ci.lower", "ci.upper", 
                   "z", "pvalue", "pvalue", "std.all")
-  col_names <- c("outcome", "predictor", "label", "b", "se", "ll", "ul", 
+  col_names <- c("outcome", "predictor", "label", "est", "se", "ll", "ul", 
                  "z", "p", "std")
   
   # Remove parameters if excluced
