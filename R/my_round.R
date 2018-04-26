@@ -41,7 +41,7 @@ my_round <- function(x, what) {
         kee(x, digits = 2)
       )
     )
-  } else if(what == "b_txt" | what == "coeff_txt") {
+  } else if(what == "b_txt" | what == "coeff_txt" | what == "2_txt") {
     ifelse(
       x <= 0.01 & x > 0,
       '< 0.01',
