@@ -8,9 +8,7 @@ my_round <- function(x, what) {
     sprintf(paste0("%.", digits, "f"),
             round(x, digits)
     ) %>%
-      gsub("0\\.",
-           ".",
-           .)
+      gsub("0\\.", ".", .)
   }
   
   kee <- function(x, digits) {
@@ -45,12 +43,12 @@ my_round <- function(x, what) {
     )
   } else if(what == "b_txt" | what == "coeff_txt") {
     ifelse(
-      x <= 0.01,
-      '< .01',
+      x <= 0.01 & x > 0,
+      '< 0.01',
       ifelse(
-        x >= -0.01 & x < 0,
-        '> -.01',
-        paste0("= ", rem_kee(x, digits = 2))
+        (x < 0) & (x >= -0.01),
+        '> -0.01',
+        paste0("= ", kee(x, digits = 2))
       )
     )
   } else if (what == "std" | what == "per" | what == "fit" | what == "beta") {
@@ -61,6 +59,16 @@ my_round <- function(x, what) {
         (x > -0.005) & (x <= 0),
         '> -.01',
         rem_kee(x, digits = 2)
+      )
+    )
+  } else if(what == "std_txt" | what == "fit_txt" | what == "beta_txt") {
+    ifelse(
+      x <= 0.01 & x > 0,
+      '< .01',
+      ifelse(
+        (x < 0) & (x >= -0.01),
+        '> -.01',
+        paste0("= ", rem_kee(x, digits = 2))
       )
     )
   } else {
