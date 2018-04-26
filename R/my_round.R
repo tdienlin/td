@@ -63,7 +63,7 @@ my_round <- function(x, what) {
     )
   } else if(what == "std_txt" | what == "fit_txt" | what == "beta_txt") {
     ifelse(
-      x <= 0.01 & x > 0,
+      (x <= 0.01 & x > 0) | x == 0,
       '< .01',
       ifelse(
         (x < 0) & (x >= -0.01),

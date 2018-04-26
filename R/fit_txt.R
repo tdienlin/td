@@ -27,7 +27,7 @@ fit_txt <- function(object, wrmr = FALSE) {
       paste0("$\\chi^2$(", 
              round(object["df"], 0),
              ") ", 
-             round(object["chisq"], "2_txt"),
+             my_round(object["chisq"], "2_txt"),
              ", \\textit{p} ", 
              my_round(object["pvalue"], "p_txt"),
              ", CFI ", 
