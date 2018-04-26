@@ -27,7 +27,7 @@ my_round <- function(x, what) {
       '< .001',
       rem_kee(x, digits = 3)
     )
-  } else if(what == "p_txt" | what == 3) {
+  } else if(what == "p_txt" | what == "3_txt") {
     ifelse(
       x <= 0.001,
       '< .001',
@@ -41,6 +41,16 @@ my_round <- function(x, what) {
         (x > -0.005) & (x <= 0),
         '> -0.01',
         kee(x, digits = 2)
+      )
+    )
+  } else if(what == "b_txt" | what == "coeff_txt") {
+    ifelse(
+      x <= 0.01,
+      '< .01',
+      ifelse(
+        x >= -0.01 & x < 0,
+        '> -.01',
+        paste0("= ", rem_kee(x, digits = 2))
       )
     )
   } else if (what == "std" | what == "per" | what == "fit" | what == "beta") {
