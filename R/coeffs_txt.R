@@ -6,7 +6,7 @@ coeffs_txt <- function(object, selection, se = FALSE){
          ", ",
          my_round(filter(object, label == selection)$ul, 2),
          "], \\textit{z} ",
-         my_round(filter(object, label == selection)$z, 2),
+         my_round(filter(object, label == selection)$z, "2_txt"),
          ", \\textit{p} ",
          my_round(filter(object, label == selection)$p, "p_txt"),
          ", $\\beta$ ",
