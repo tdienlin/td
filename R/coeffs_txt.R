@@ -1,5 +1,5 @@
 coeffs_txt <- function(object, selection, se = FALSE){
-  paste0("(\\textit{b} ",
+  paste0("\\textit{b} ",
          my_round(filter(object, label == selection)$est, "b_txt"),
          ", 95% CI [",
          my_round(filter(object, label == selection)$ll, 2),
@@ -10,7 +10,6 @@ coeffs_txt <- function(object, selection, se = FALSE){
          ", \\textit{p} ",
          my_round(filter(object, label == selection)$p, "p_txt"),
          ", $\\beta$ ",
-         my_round(filter(object, label == selection)$std, "std_txt"),
-         ")"
+         my_round(filter(object, label == selection)$std, "std_txt")
   )
 }
