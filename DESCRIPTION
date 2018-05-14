@@ -1,6 +1,6 @@
 Package: td
 Title: Functions For Everyday Use
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: person("Tobias", "Dienlin", email = "tobias.dienlin@uni-hohenheim.de", role = c("aut", "cre"))
 Description: Functions for data-wrangling, extracting and reporting statistical results.
 Depends: R (>= 3.4.2)
@@ -14,4 +14,4 @@ Imports:
 License: CC0
 Encoding: UTF-8
 LazyData: true
-Date: 2018-04-20
+Date: 2018-05-09
