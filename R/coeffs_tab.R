@@ -1,6 +1,6 @@
 coeffs_tab <- function(object, name,
                    ci = TRUE, standardized = TRUE, pvalue = TRUE, pvalue_txt = TRUE,
-                   save_object = FALSE, print = TRUE, one_tailed = FALSE, hypotheses,
+                   save = FALSE, print = TRUE, one_tailed = FALSE, hypotheses,
                    wald_z = TRUE, se = TRUE, manuscript = FALSE) {
   # Outputs regression coefficients from lavaan object
   
@@ -53,7 +53,7 @@ coeffs_tab <- function(object, name,
       mutate_at(., vars("b", "ll", "ul", "z"), funs(my_round(., 2))) %>%
       mutate_at(., vars("std"), funs(my_round(., "std")))
   }
-  if(isTRUE(save_object)) {assign(x = name, value = temp, envir = .GlobalEnv)}
+  if(isTRUE(save)) {assign(x = name, value = temp, envir = .GlobalEnv)}
   if(isTRUE(print)){
     cat("Regression Coefficients:\n\n")
     print(temp, row.names = FALSE)
