@@ -1,4 +1,4 @@
-ci_text <- function(data = d, var, cond, item, m, se, sd, n){
+ci_text <- function(data, var, cond, item, m, se, sd, n){
   # Calculates Confidence Interval of Variable 
   
   if(missing(m)) {
