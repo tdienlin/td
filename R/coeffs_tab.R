@@ -5,6 +5,7 @@ coeffs_tab <- function(object,
                                       "z", "pvalue"),
                        col_names = c("outcome", "predictor", "label", "est",  
                                      "ll", "ul", "se", "std", "z", "p"),
+                       labels = NULL,  # provide custom labels if necessary
                        save = FALSE, 
                        print = TRUE, 
                        as_text = FALSE,
@@ -23,7 +24,8 @@ coeffs_tab <- function(object,
     {if(isTRUE(labelled_only)) filter(., label != "") else .} %>% 
     select(parameters) %>%
     as.data.frame() %>%
-    set_colnames(col_names)
+    set_colnames(col_names) %>% 
+    {if(!is.null(labels)) mutate(., label = labels) else .}
   
   if(isTRUE(as_text)){
     temp2 <- temp %>%
