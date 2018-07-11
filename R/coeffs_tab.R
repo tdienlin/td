@@ -7,8 +7,7 @@ coeffs_tab <- function(object,
                                      "ll", "ul", "se", "std", "z", "p"),
                        labels = NULL,  # provide custom labels if necessary
                        save = FALSE, 
-                       print = TRUE, 
-                       as_text = FALSE,
+                       print = TRUE,
                        labelled_only = TRUE,
                        one_tailed = FALSE, 
                        hypotheses_onetailed
