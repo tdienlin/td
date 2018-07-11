@@ -3,7 +3,7 @@ factor_val <- function(object,
                        save = FALSE, 
                        print = TRUE, 
                        reliability = TRUE,
-                       robust = NULL,
+                       robust,
                        ...) {
   # Computes and returns factorial validity of a fitted Model
   
@@ -16,7 +16,7 @@ factor_val <- function(object,
              "srmr", "alpha", "omega", "avevar")
   
   # if not defined, determine whether robust estimators were used
-  if(is.null(robust)) {
+  if(missing(robust)) {
     if(is.na(inspect(object, what = "fit")["chisq.scaled"])) {
       robust = FALSE
     } else {
