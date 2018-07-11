@@ -26,7 +26,7 @@ coeffs_tab <- function(object,
     set_colnames(col_names)
   
   if(isTRUE(as_text)){
-    temp <- temp %>%
+    temp2 <- temp %>%
     {if(isTRUE(one_tailed)) mutate(., p_num = ifelse(label %in% hypotheses_onetailed, p / 2, p)) else .} %>% 
     {if(isTRUE("pvalue" %in% parameters)) mutate_at(., vars("p"), funs(my_round(., "p"))) else .} %>%
     {if(isTRUE("est" %in% parameters)) mutate_at(., vars("est"), funs(my_round(., 2))) else .} %>%
@@ -43,7 +43,7 @@ coeffs_tab <- function(object,
   
   if(isTRUE(print)){
     cat("Regression Coefficients:\n\n")
-    print(temp, row.names = FALSE)
+    print(temp2, row.names = FALSE)
   } else {
     return(temp)
   }
