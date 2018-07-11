@@ -3,7 +3,6 @@ factor_val <- function(object,
                        save = FALSE, 
                        print = TRUE, 
                        reliability = TRUE,
-                       robust,
                        ...) {
   # Computes and returns factorial validity of a fitted Model
   
@@ -16,18 +15,16 @@ factor_val <- function(object,
              "srmr", "alpha", "omega", "avevar")
   
   # if not defined, determine whether robust estimators were used
-  if(missing(robust)) {
-    if(is.na(inspect(object, what = "fit")["chisq.scaled"])) {
+  if(is.na(inspect(object, what = "fit")["chisq.scaled"])) {
       robust = FALSE
     } else {
       robust = TRUE
-    }
   }
   
   # select robust or standard indices 
   if(isTRUE(robust)) {
-    indices <- c("chisq.scaled", "df.scaled", "pvalue.scaled", "cfi.robust",
-                     "tli.robust", "rmsea.robust", "srmr_bentler")
+    indices <- c("chisq.scaled", "df.scaled", "pvalue.scaled", "cfi.scaled",
+                     "tli.scaled", "rmsea.scaled", "srmr_bentler")
   } else {
     indices <- c("chisq", "df", "pvalue", "cfi",
                      "tli", "rmsea", "srmr")
