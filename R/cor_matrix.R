@@ -1,5 +1,5 @@
 cor_matrix <- function(data, mapping, color = I("black"),
-                       sizeRange = c(1, 5), colored = FALSE, ...) {
+                       colored = FALSE, ...) {
   
   # dependencies
   packages <- c("GGally")
