@@ -6,7 +6,8 @@ coeffs_tab <- function(object,
                        col_names = c("outcome", "predictor", "label", "est",  
                                      "ll", "ul", "se", "std", "z", "df", "p"),
                        df = TRUE,
-                       labels = NULL,  # provide custom labels if necessary
+                       groups = FALSE,
+                       group_labels = NULL,  # provide custom group_labels if necessary
                        save = FALSE, 
                        print = TRUE,
                        labelled_only = TRUE,
@@ -26,10 +27,20 @@ coeffs_tab <- function(object,
   if(isTRUE(df)) {
     n <- nobs(object)
     i <- 1
-    for(i in seq_along(temp$lhs)) {
-      var <- temp$lhs[i]
-      n_predictors <- sum(temp$lhs == var)
-      df[i] <- n - n_predictors - 1
+    if(isTRUE(groups)) {
+      for(i in seq_along(temp$lhs)) {
+        var <- temp$lhs[i]
+        i_group <- temp$group[i]
+        temp2 <- filter(temp, group == i_group)
+        n_predictors <- sum(temp2$lhs == var) 
+        df[i] <- n - n_predictors - 1
+      }
+    } else {
+      for(i in seq_along(temp$lhs)) {
+        var <- temp$lhs[i]
+        n_predictors <- sum(temp$lhs == var) 
+        df[i] <- n - n_predictors - 1
+      }
     }
   }
   
@@ -40,7 +51,7 @@ coeffs_tab <- function(object,
     select(parameters) %>%
     as.data.frame() %>%
     set_colnames(col_names) %>% 
-    {if(!is.null(labels)) mutate(., label = labels) else .}
+    {if(!is.null(group_labels)) mutate(., label = group_labels) else .}
   
   
   temp_txt <- temp %>%
