@@ -1,5 +1,4 @@
-cor_matrix <- function(data, mapping, color = I("black"),
-                       colored = FALSE, ...) {
+cor_matrix <- function(data, mapping, colored = FALSE, ...) {
   
   # dependencies
   packages <- c("GGally")
@@ -9,7 +8,7 @@ cor_matrix <- function(data, mapping, color = I("black"),
   x <- eval(mapping$x, data)
   y <- eval(mapping$y, data)
   
-  ct <- cor.test(x,y)
+  ct <- cor.test(x, y)
   
   r <- unname(ct$estimate)
   tt <- my_round(r, "std")
