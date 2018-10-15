@@ -3,6 +3,7 @@ factor_val <- function(object,
                        save = FALSE, 
                        print = TRUE, 
                        reliability = TRUE,
+                       format = TRUE,
                        ...) {
   # Computes and returns factorial validity of a fitted Model
   
@@ -42,16 +43,20 @@ factor_val <- function(object,
   }
   
   # format results
-  factor_val <- factor_val %>%
-    as.data.frame() %>%
-    t() %>%
-    as.data.frame() %>%
-    set_colnames(indices_names) %>%
-    mutate_at(., vars("p(chisq)"), 
-              funs(my_round(., 3))) %>%
-    mutate_at(., vars(indices_names[-grep("df|p\\(chisq)", indices_names)]), 
-              funs(my_round(., "std"))) %>%
-    set_rownames(., name)
+    factor_val <- factor_val %>%
+      as.data.frame() %>%
+      t() %>%
+      as.data.frame() %>%
+      set_colnames(indices_names) %>%
+      set_rownames(., name)
+      
+    if(isTRUE(format)) {
+      factor_val %>%   
+      mutate_at(., vars("p(chisq)"), 
+                  funs(my_round(., 3))) %>%
+        mutate_at(., vars(indices_names[-grep("df|p\\(chisq)", indices_names)]), 
+                  funs(my_round(., "std")))
+      }
   
   ## global
   if(isTRUE(save)) {
