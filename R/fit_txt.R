@@ -2,7 +2,6 @@ fit_txt <- function(object, wrmr = FALSE) {
   # function for printing fit of models. 
   # Best used as inline R code-chunk in rmd
   
-  
   temp <- if(isTRUE(wrmr)){
     paste0("$\\chi^2$(", 
            round(object["df"], 0),
