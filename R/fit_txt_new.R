@@ -16,7 +16,7 @@ fit_txt_new <- function(object,
   
   try(
     if(is.null("object") || 
-       !isTRUE(class(fit_lifsat) == "lavaan")) {
+       !isTRUE(class(object) == "lavaan")) {
       stop("please provide fitted lavaan object")
     }
   )
