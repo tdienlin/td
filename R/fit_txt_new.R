@@ -37,9 +37,9 @@ fit_txt_new <- function(object,
              my_round(fit_measures["rmsea.ci.lower"], "std"),
              ", ",
              my_round(fit_measures["rmsea.ci.upper"], "std"),
-             "], ")}
-    , if(isTRUE("tli" %in% names(fit_measures[]))) {
-      paste0(", tli ",
+             "]")}
+    , if(isTRUE("srmr" %in% names(fit_measures[]))) {
+      paste0(", srmr ",
              my_round(fit_measures["tli"], "fit_txt"))}
   )
   return(temp)
