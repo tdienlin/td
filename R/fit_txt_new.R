@@ -8,7 +8,7 @@
 #' fit_txt(fit)
 
 
-fit_txt <- function(object, 
+fit_txt_new <- function(object, 
                     estimators = c("chisq", "df", "pvalue", "cfi", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "srmr"), 
                     robust = FALSE) {
   # function for printing fit of models. 
