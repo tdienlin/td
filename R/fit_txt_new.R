@@ -33,7 +33,7 @@ fit_txt_new <- function(object,
     , if(isTRUE("rmsea" %in% names(fit_measures[]))) {
       paste0(", rmsea ",
              my_round(fit_measures["rmsea"], "fit_txt"),
-             " [",
+             ", 90% CI [",
              my_round(fit_measures["rmsea.ci.lower"], "std"),
              ", ",
              my_round(fit_measures["rmsea.ci.upper"], "std"),
