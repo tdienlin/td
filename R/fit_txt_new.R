@@ -40,7 +40,7 @@ fit_txt_new <- function(object,
              "]")}
     , if(isTRUE("srmr" %in% names(fit_measures[]))) {
       paste0(", srmr ",
-             my_round(fit_measures["tli"], "fit_txt"))}
+             my_round(fit_measures["srmr"], "fit_txt"))}
   )
   return(temp)
 }
