@@ -1,5 +1,6 @@
 fit_txt_new <- function(object,
                         estimators = c("chisq", "df", "pvalue", "cfi", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "srmr"),
+                        scaled = FALSE,
                         robust = FALSE) {
   # function for printing fit of models.
   # Best used as inline R code-chunk in rmd
@@ -16,11 +17,20 @@ fit_txt_new <- function(object,
   lapply(packages, library, character.only = TRUE)
   
   # extract fit measures
-  fit_measures <- inspect(object, what = "fit") %>%
-    .[estimators]
+  if(!isTRUE(scaled)){
+    fit_measures <- inspect(object, what = "fit") %>% .[estimators]
+  } else {
+    estimators_new <- paste0(estimators, ".scaled")
+    if(isTRUE("srmr.scaled" %in% estimators_new)) (
+      estimators_new[estimators_new == "srmr.scaled"] <- "srmr_bentler"
+      )
+    fit_measures <- inspect(object, what = "fit") %>% .[estimators_new] %>% 
+      set_names(estimators)
+  }
+  
   
   temp <- paste0(
-    if(isTRUE("chisq" %in% names(fit_measures))) {
+    if(isTRUE("chisq" %in% estimators)) {
       paste0("$\\chi^2$(",
              round(fit_measures["df"], 0),
              ") ",
