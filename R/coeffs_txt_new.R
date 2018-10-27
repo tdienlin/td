@@ -1,4 +1,5 @@
-coeffs_txt_new <- function(object, label = NULL, lhs = NULL, rhs = NULL, 
+coeffs_txt_new <- function(object, label_effect = NULL, 
+                           lhs_effect = NULL, rhs_effect = NULL, 
                            indirect_effect = NULL) {
 
   library(lavaan)
@@ -6,10 +7,10 @@ coeffs_txt_new <- function(object, label = NULL, lhs = NULL, rhs = NULL,
   
   if(!is.null(label)){
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
-      filter(op == "~", label == label)
+      filter(op == "~" & label == label_effect)
   } else {
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
-      filter(op == "~", lhs == lhs, rhs == rhs)
+      filter(op == "~" & lhs == lhs_effect, rhs == rhs_effect)
   }
   
   if(!isTRUE(indirect_effect)) {
