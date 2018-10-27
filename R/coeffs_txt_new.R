@@ -7,10 +7,10 @@ coeffs_txt_new <- function(object, label_effect = NULL,
   
   if(!is.null(label)){
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
-      filter(op == "~" & label == label_effect)
+      filter(label == label_effect)
   } else {
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
-      filter(op == "~" & lhs == lhs_effect, rhs == rhs_effect)
+      filter(lhs == lhs_effect, rhs == rhs_effect)
   }
   
   if(!isTRUE(indirect_effect)) {
