@@ -4,5 +4,5 @@ model <- '
   x =~ x1 + x2 + x3
   y ~ a*x
 '
-fit <- cfa(model, PoliticalDemocracy, estimator = "WLSMV")
-summary(fit, fit = TRUE, std = TRUE)
+# fit <- cfa(model, PoliticalDemocracy, estimator = "WLSMV")
+# summary(fit, fit = TRUE, std = TRUE)
