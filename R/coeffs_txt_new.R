@@ -1,11 +1,11 @@
 coeffs_txt_new <- function(object, label_effect = NULL, 
                            lhs_effect = NULL, rhs_effect = NULL, 
-                           indirect_effect = NULL) {
+                           indirect_effect = NULL, one_sided = FALSE) {
 
   library(lavaan)
   library(tidyverse)
   
-  if(!is.null(label)){
+  if(!is.null(label_effect)){
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
       filter(label == label_effect) %>% 
       .[1, ]
@@ -13,6 +13,10 @@ coeffs_txt_new <- function(object, label_effect = NULL,
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
       filter(lhs == lhs_effect, rhs == rhs_effect) %>% 
       .[1, ]
+  }
+  
+  if(isTRUE(one_sided)) {
+    coeffs["pvalue"] <- coeffs["pvalue"] / 2
   }
   
   if(!isTRUE(indirect_effect)) {
