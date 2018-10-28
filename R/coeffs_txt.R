@@ -1,6 +1,6 @@
 coeffs_txt <- function(object, label_effect = NULL, 
-                           lhs_effect = NULL, rhs_effect = NULL, 
-                           indirect_effect = NULL, one_sided = FALSE) {
+                       lhs_effect = NULL, rhs_effect = NULL, 
+                       indirect_effect = NULL, one_sided = FALSE) {
 
   library(lavaan)
   library(tidyverse)

@@ -1,7 +1,7 @@
-fit_txt <- function(object,
-                        estimators = c("chisq", "df", "pvalue", "cfi", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "srmr"),
-                        scaled = FALSE,
-                        robust = FALSE) {
+fit_txt <- function(object, 
+                    estimators = c("chisq", "df", "pvalue", "cfi", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "srmr"),
+                    scaled = FALSE,
+                    robust = FALSE) {
   # function for printing fit of models.
   # Best used as inline R code-chunk in rmd
   
