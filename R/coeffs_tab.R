@@ -1,4 +1,4 @@
-coeffs_tab_new <- function(object, label_effect = NULL, 
+coeffs_tab <- function(object, label_effect = NULL, 
                            lhs_effect = NULL, rhs_effect = NULL, 
                            indirect_effect = NULL, one_sided = FALSE,
                            as_text = FALSE) {
