@@ -29,7 +29,7 @@ coeffs_tab <- function(object, label_effect = NULL,
   }
   
   coeffs <- coeffs %>% 
-    select(Predictor = rhs, b = est, ll = ci.lower, ul = ci.upper, beta = std.all, p = pvalue)
+    select(Outcome = lhs, Predictor = rhs, b = est, ll = ci.lower, ul = ci.upper, beta = std.all, p = pvalue)
   
   if(isTRUE(as_text)) {
     coeffs <- coeffs %>% 
