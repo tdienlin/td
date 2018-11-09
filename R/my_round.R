@@ -31,7 +31,7 @@ my_round <- function(x, what) {
       '< .001',
       paste0("= ", rem_kee(x, digits = 3))
     )
-  } else if (what == "b" | what == "unstd" | what == "coeff" | what == 2) {
+  } else if (what == "b" | what == "unstd" | what == "coeff" | what == 2 | what == "est") {
     ifelse(
       (x < 0.005) & (x >= 0),
       '< 0.01',
