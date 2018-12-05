@@ -4,7 +4,7 @@ model <- '
   y_2 =~ y5 + y6 + y7 + y8
   x =~ x1 + x2 + x3
   y_1 ~ a*x
-  y_2 ~ a*x
+  y_2 ~ b*x
 '
 # fit <- cfa(model, PoliticalDemocracy, estimator = "WLSMV")
 # summary(fit, fit = TRUE, std = TRUE)
