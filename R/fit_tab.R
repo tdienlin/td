@@ -30,9 +30,9 @@ fit_tab <- function(object,
   
   if(isTRUE(reliability)) {
     fit_tab %<>% 
-      mutate(omega = semTools::reliability(fit)["alpha", "total"],
-             alpha = semTools::reliability(fit)["omega", "total"],
-             ave = semTools::reliability(fit)["avevar", "total"]
+      mutate(omega = semTools::reliability(object)["alpha", "total"],
+             alpha = semTools::reliability(object)["omega", "total"],
+             ave = semTools::reliability(object)["avevar", "total"]
              )
     
     if(isTRUE(as_text)) {
