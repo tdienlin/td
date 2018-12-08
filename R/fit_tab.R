@@ -2,7 +2,8 @@ fit_tab <- function(object,
                     measures = c("chisq", "df", "pvalue", "cfi", 
                                  "tli", "rmsea", "srmr"),
                     wrmr = FALSE,
-                    as_text = FALSE
+                    as_text = FALSE,
+                    reliability = FALSE
 ) {
   # extract typical fit measures from lavaan object
   
@@ -24,5 +25,17 @@ fit_tab <- function(object,
       mutate_at(vars(pvalue), funs(my_round(., "p")))
   }
   
+  if(isTRUE(reliability)) {
+    fit_tab %<>% 
+      mutate(omega = semTools::reliability(fit)["alpha", "total"],
+             alpha = semTools::reliability(fit)["omega", "total"],
+             ave = semTools::reliability(fit)["avevar", "total"]
+             )
+    
+    if(isTRUE(as_text)) {
+      fit_tab %<>%
+        mutate_at(vars(omega, alpha, ave), funs(my_round(., "std")))
+    }
+  }
   return(fit_tab)
 }
