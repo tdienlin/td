@@ -16,10 +16,13 @@ fit_tab <- function(object,
     fit_tab <- c(fitMeasures(object, fit.measures = measures))
   }
   
+  # make as data.frame
+  fit_tab %<>%
+    t() %>% 
+    as.data.frame()
+  
   if(isTRUE(as_text)) {
     fit_tab %<>%
-      t() %>% 
-      as.data.frame() %>% 
       mutate_at(vars(chisq), funs(my_round(., "coeff"))) %>% 
       mutate_at(vars(cfi, tli, rmsea, srmr), funs(my_round(., "beta"))) %>% 
       mutate_at(vars(pvalue), funs(my_round(., "p")))
