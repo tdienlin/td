@@ -1,7 +1,9 @@
-coeffs_tab <- function(object, label_effect = NULL, 
-                           lhs_effect = NULL, rhs_effect = NULL, 
-                           indirect_effect = NULL, one_sided = FALSE,
-                           as_text = FALSE) {
+coeffs_tab <- function(object, 
+                       std_type = "std.all",
+                       label_effect = NULL, 
+                       lhs_effect = NULL, rhs_effect = NULL, 
+                       indirect_effect = NULL, one_sided = FALSE,
+                       as_text = FALSE) {
   
   library(lavaan)
   library(tidyverse)
@@ -29,7 +31,7 @@ coeffs_tab <- function(object, label_effect = NULL,
   }
   
   coeffs <- coeffs %>% 
-    select(Outcome = lhs, Predictor = rhs, b = est, ll = ci.lower, ul = ci.upper, beta = std.all, p = pvalue)
+    select(Outcome = lhs, Predictor = rhs, b = est, ll = ci.lower, ul = ci.upper, beta = std_type, p = pvalue)
   
   if(isTRUE(as_text)) {
     coeffs <- coeffs %>% 
