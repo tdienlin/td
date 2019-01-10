@@ -1,9 +1,9 @@
 coeffs_tab <- function(object, 
-                       std_type = "std.all",
                        label_effect = NULL, 
                        lhs_effect = NULL, rhs_effect = NULL, 
                        indirect_effect = NULL, one_sided = FALSE,
-                       as_text = FALSE) {
+                       as_text = FALSE,
+                       std_type = "std.all") {
   
   library(lavaan)
   library(tidyverse)
