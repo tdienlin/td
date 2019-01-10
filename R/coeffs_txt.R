@@ -1,6 +1,8 @@
-coeffs_txt <- function(object, label_effect = NULL, 
+coeffs_txt <- function(object, 
+                       label_effect = NULL, 
                        lhs_effect = NULL, rhs_effect = NULL, 
-                       indirect_effect = NULL, one_sided = FALSE) {
+                       indirect_effect = NULL, one_sided = FALSE,
+                       std_type = "std.all") {
 
   library(lavaan)
   library(tidyverse)
@@ -21,7 +23,7 @@ coeffs_txt <- function(object, label_effect = NULL,
   
   if(!isTRUE(indirect_effect)) {
     paste0("$\\beta$ ",
-           my_round(coeffs["std.all"], "std_txt"),
+           my_round(coeffs[std_type], "std_txt"),
            ", \\textit{b} ",
            my_round(coeffs["est"], "b_txt"),
            ", 95% CI [",
