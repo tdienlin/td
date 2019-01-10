@@ -11,15 +11,15 @@ coeffs_tab <- function(object,
   if(!is.null(label_effect)){
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
       filter(label %in% label_effect)
-  } else if(!is.null(lhs_effect) & !is.null(rhs_effect)) {
+  } else if((!is.null(lhs_effect)) & (!is.null(rhs_effect))) {
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
       filter(lhs %in% lhs_effect, rhs %in% rhs_effect)
   } else if(!is.null(lhs_effect)) {
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
-      filter(lhs %in% lhs_effect & op == "~")
+      filter((lhs %in% lhs_effect) & (op == "~"))
   } else if(!is.null(rhs_effect)) {
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
-      filter(rhs %in% rhs_effect & op == "~")
+      filter((rhs %in% rhs_effect) & (op == "~"))
   } else {
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 
       filter(op == "~")
