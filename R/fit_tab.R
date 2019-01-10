@@ -1,6 +1,5 @@
 fit_tab <- function(object, 
-                    measures = c("chisq", "df", "pvalue", "cfi", 
-                                 "tli", "rmsea", "srmr"),
+                    measures = c("chisq", "df", "pvalue", "cfi", "tli", "rmsea", "srmr"),
                     wrmr = FALSE,
                     as_text = FALSE,
                     reliability = FALSE,

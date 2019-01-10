@@ -1,5 +1,6 @@
 fit_txt <- function(object, 
                     estimators = c("chisq", "df", "pvalue", "cfi", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "srmr"),
+                    wrmr = FALSE,
                     scaled = FALSE) {
   # function for printing fit of models.
   # Best used as inline R code-chunk in rmd
@@ -27,6 +28,9 @@ fit_txt <- function(object,
       set_names(estimators)
   }
   
+  if("wrmr" %in% estimators | isTRUE(wrmr)) {
+    wrmr_est <- as.numeric(calc_wrmr(object))
+  }
   
   temp <- paste0(
     if(isTRUE("chisq" %in% estimators)) {
@@ -47,9 +51,12 @@ fit_txt <- function(object,
              ", ",
              my_round(fit_measures["rmsea.ci.upper"], "std"),
              "]")}
-    , if(isTRUE("srmr" %in% names(fit_measures[]))) {
+    , if(isTRUE(("srmr" %in% names(fit_measures[]) & (!isTRUE(wrmr))))) {
       paste0(", srmr ",
              my_round(fit_measures["srmr"], "fit_txt"))}
+    , if(isTRUE(wrmr)) {
+      paste0(", wrmr ",
+             my_round(wrmr_est, "fit_txt"))}
   )
   return(temp)
 }
