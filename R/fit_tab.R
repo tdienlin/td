@@ -1,6 +1,7 @@
 #' Extract table of results from fitted lavaan object
 #'
 #' @param object fitted lavaan object
+#' @export
 fit_tab <- function(object, 
                     measures = c("chisq", "df", "pvalue", "cfi", "tli", "rmsea", "srmr"),
                     wrmr = FALSE,

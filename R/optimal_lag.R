@@ -6,6 +6,7 @@
 #' @param d numeric. Stability of dependent variable.
 #' @param r numeric. Effect of dependent on independent.
 #' @param interval numeric. Current interval (e.g., 6 months).
+#' @export
 
 optimal_lag <- function(i, 
                         c,

@@ -1,5 +1,6 @@
 #' Calculate Monte-Carlo interval
 #' @description Calculates Monte Carlo interval for indirect effects.
+#' @export
 calc_mc <- function(object, print = TRUE, draws = 20000) {
   
   if(nrow(object) == 2) {

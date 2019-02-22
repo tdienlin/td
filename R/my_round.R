@@ -3,6 +3,7 @@
 #' @description Various ways to round numbers. Useful for reproducible manuscripts.
 #' @param x numeric.
 #' @param what string or numeric.
+#' @export
 my_round <- function(x, what) {
   # Formats results for printing
   

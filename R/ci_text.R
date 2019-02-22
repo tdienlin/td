@@ -1,5 +1,6 @@
 #' Calculate Confidence Interval
 #' @description # Calculates Confidence Interval of Variable.
+#' @export
 ci_text <- function(data, var, cond, item, m, se, sd, n){
   if(missing(m)) {
     m <- 

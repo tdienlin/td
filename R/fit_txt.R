@@ -1,6 +1,7 @@
 #' Extract results from fitted lavaan object for display in markdown text
 #'
 #' @param object fitted lavaan object
+#' @export
 fit_txt <- function(object, 
                     estimators = c("chisq", "df", "pvalue", "cfi", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "srmr"),
                     wrmr = FALSE,

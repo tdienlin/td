@@ -1,14 +1,14 @@
 #' Extract text with results
 #' @description Extract text with results from fitted lavaan object.
 #' @param object fitted lavaan object
+#' @export
 coeffs_txt <- function(object, 
                        label_effect = NULL, 
                        lhs_effect = NULL, rhs_effect = NULL, 
                        indirect_effect = NULL, one_sided = FALSE,
                        std_type = "std.all") {
 
-  library(lavaan)
-  library(tidyverse)
+  library(lavaan); library(tidyverse)
   
   if(!is.null(label_effect)){
     coeffs <- parameterestimates(object, standardized = TRUE) %>% 

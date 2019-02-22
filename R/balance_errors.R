@@ -1,20 +1,21 @@
 #' Balance Alpha and Beta Error
 #' @description Find alpha-value for which 1-power and alpha are balanced.
+#' @export
 balance_errors <- function(sesoi, n, one_tailed){
   
   # dependencies
-  library(pwr)
+  library(pwr); library(magrittr)
   
   alphas <- seq(from = .0001, to = 1, by = .0001)
   power <- 0
   
   if(one_tailed == FALSE) {
     for (i in seq_along(alphas)) {
-      power[i] <- pwr.r.test(n = n, r = sesoi, sig.level = alphas[i])$power %>% round(3)
+      power[i] <- pwr::pwr.r.test(n = n, r = sesoi, sig.level = alphas[i])$power %>% round(3)
     }
   } else {
     for (i in seq_along(alphas)) {
-      power[i] <- pwr.r.test(n = n, r = sesoi, sig.level = alphas[i], alternative = "greater")$power %>% round(3)
+      power[i] <- pwr::pwr.r.test(n = n, r = sesoi, sig.level = alphas[i], alternative = "greater")$power %>% round(3)
     }
   }
   
