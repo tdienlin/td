@@ -1,16 +1,6 @@
 #' Extract table of results from fitted lavaan object
 #'
 #' @param object fitted lavaan object
-#' @export
-#' @examples
-#' model <- 'y_1 =~ y1 + y2 + y3 + y4
-#' y_2 =~ y5 + y6 + y7 + y8
-#' x =~ x1 + x2 + x3
-#' y_1 ~ a*x
-#' y_2 ~ b*x
-#' '
-#' fit <- lavaan::cfa(model, PoliticalDemocracy, estimator = "WLSMV")
-#' fit_tab(fit)
 fit_tab <- function(object, 
                     measures = c("chisq", "df", "pvalue", "cfi", "tli", "rmsea", "srmr"),
                     wrmr = FALSE,

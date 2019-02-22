@@ -14,13 +14,3 @@ fit_tab(object, measures = c("chisq", "df", "pvalue", "cfi", "tli",
 \description{
 Extract table of results from fitted lavaan object
 }
-\examples{
-model <- 'y_1 =~ y1 + y2 + y3 + y4
-y_2 =~ y5 + y6 + y7 + y8
-x =~ x1 + x2 + x3
-y_1 ~ a*x
-y_2 ~ b*x
-'
-fit <- lavaan::cfa(model, PoliticalDemocracy, estimator = "WLSMV")
-fit_tab(fit)
-}
