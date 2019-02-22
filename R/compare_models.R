@@ -1,3 +1,4 @@
+#' Compare Models
 compare_models <- function(model_1, model_2, name_1, name_2, print = FALSE) {
   # Compares models; output a little bit nicer than regular one
   

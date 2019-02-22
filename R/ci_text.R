@@ -1,6 +1,6 @@
+#' Calculate Confidence Interval
+#' @description # Calculates Confidence Interval of Variable.
 ci_text <- function(data, var, cond, item, m, se, sd, n){
-  # Calculates Confidence Interval of Variable 
-  
   if(missing(m)) {
     m <- 
       filter_at(data, vars(var), any_vars(. == cond)) %>% 

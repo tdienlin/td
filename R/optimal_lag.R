@@ -1,8 +1,17 @@
-optimal_lag <- function(i, # stability of independet, 
-                        c, # effect of independet on dependent
-                        d, # stability of dependet,
-                        r,  # effect of dependent on independent
-                        interval, # current interval (e.g., 6 months)
+#' Calculate Optimal Lag for Longitudinal Designs
+#'
+#' @description Calculate Optimal Lag for Longitudinal Designs.
+#' @param i numeric. Stability of independent variable.
+#' @param c numeric. Effect of independent on dependent variable.
+#' @param d numeric. Stability of dependent variable.
+#' @param r numeric. Effect of dependent on independent.
+#' @param interval numeric. Current interval (e.g., 6 months).
+
+optimal_lag <- function(i, 
+                        c,
+                        d,
+                        r,
+                        interval,
                         reciprocal = TRUE
 ){
   # Calculate optimal time lags for longitudinal panel design

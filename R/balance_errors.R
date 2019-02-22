@@ -1,5 +1,6 @@
+#' Balance Alpha and Beta Error
+#' @description Find alpha-value for which 1-power and alpha are balanced.
 balance_errors <- function(sesoi, n, one_tailed){
-  # find alpha-value for which 1-power and alpha are balanced
   
   # dependencies
   library(pwr)

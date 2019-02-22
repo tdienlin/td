@@ -1,6 +1,7 @@
+#' Calculate Monte-Carlo interval
+#' @description Calculates Monte Carlo interval for indirect effects.
 calc_mc <- function(object, print = TRUE, draws = 20000) {
   
-  # calculates Monte Carlo interval for indirect effects
   if(nrow(object) == 2) {
     ab_distr <- (rnorm(draws, object[1, "est"], object[1, "se"]) * 
                              rnorm(draws, object[2, "est"], object[2, "se"]))

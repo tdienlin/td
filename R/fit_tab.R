@@ -1,13 +1,16 @@
-#' The length of a string (in characters).
+#' Extract table of results from fitted lavaan object
 #'
-#' @param string input character vector
-#' @return numeric vector giving number of characters in each element of the
-#'   character vector.  Missing strings have missing length.
-#' @seealso \code{\link{nchar}} which this function wraps
+#' @param object fitted lavaan object
 #' @export
 #' @examples
-#' str_length(letters)
-#' str_length(c("i", "like", "programming", NA))
+#' model <- 'y_1 =~ y1 + y2 + y3 + y4
+#' y_2 =~ y5 + y6 + y7 + y8
+#' x =~ x1 + x2 + x3
+#' y_1 ~ a*x
+#' y_2 ~ b*x
+#' '
+#' fit <- lavaan::cfa(model, PoliticalDemocracy, estimator = "WLSMV")
+#' fit_tab(fit)
 fit_tab <- function(object, 
                     measures = c("chisq", "df", "pvalue", "cfi", "tli", "rmsea", "srmr"),
                     wrmr = FALSE,
@@ -15,6 +18,10 @@ fit_tab <- function(object,
                     reliability = FALSE,
                     scaled = FALSE
 ) {
+  
+  # load necessary packages
+  packages <- c("magrittr", "tidyverse", "lavaan")
+  lapply(packages, library, character.only = TRUE)
   
   # extract fit measures
   if(!isTRUE(scaled)){

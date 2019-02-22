@@ -2,26 +2,25 @@
 % Please edit documentation in R/fit_tab.R
 \name{fit_tab}
 \alias{fit_tab}
-\title{The length of a string (in characters).}
+\title{Extract table of results from fitted lavaan object}
 \usage{
 fit_tab(object, measures = c("chisq", "df", "pvalue", "cfi", "tli",
   "rmsea", "srmr"), wrmr = FALSE, as_text = FALSE,
   reliability = FALSE, scaled = FALSE)
 }
 \arguments{
-\item{string}{input character vector}
-}
-\value{
-numeric vector giving number of characters in each element of the
-  character vector.  Missing strings have missing length.
+\item{object}{fitted lavaan object}
 }
 \description{
-The length of a string (in characters).
+Extract table of results from fitted lavaan object
 }
 \examples{
-str_length(letters)
-str_length(c("i", "like", "programming", NA))
-}
-\seealso{
-\code{\link{nchar}} which this function wraps
+model <- 'y_1 =~ y1 + y2 + y3 + y4
+y_2 =~ y5 + y6 + y7 + y8
+x =~ x1 + x2 + x3
+y_1 ~ a*x
+y_2 ~ b*x
+'
+fit <- lavaan::cfa(model, PoliticalDemocracy, estimator = "WLSMV")
+fit_tab(fit)
 }

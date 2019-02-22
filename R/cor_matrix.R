@@ -1,3 +1,5 @@
+#' Correlation Matrix
+#' @description Provides a correlation matrix that can be used together with the package GGally.
 cor_matrix <- function(data, mapping, colored = FALSE, ...) {
   
   # dependencies

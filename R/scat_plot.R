@@ -1,3 +1,6 @@
+#' Display Data in Scatterplots
+#'
+#' @param data dataframe
 scat_plot <- function(data, mapping, coords, ...) {
   # Formats the graphs in zero-order correlation tables.
   

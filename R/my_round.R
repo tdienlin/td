@@ -1,3 +1,8 @@
+#' Various Ways to Round Numbers
+#'
+#' @description Various ways to round numbers. Useful for reproducible manuscripts.
+#' @param x numeric.
+#' @param what string or numeric.
 my_round <- function(x, what) {
   # Formats results for printing
   
