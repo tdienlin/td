@@ -3,7 +3,7 @@
 \docType{data}
 \name{privpers}
 \alias{privpers}
-\title{Data with measures of Privacy and Personality}
+\title{Dataset "Privacy and Personality"}
 \format{A data frame with 296 rows and 223 variables. Answer format was a 7-point Likert scale.
 \describe{
   \item{pri_att_soc}{Privacy Attitude Societal}
@@ -48,10 +48,10 @@
 \href{https://osf.io/cqp46/}{Open Science Framework}
 }
 \usage{
-data(perspriv)
+perspriv
 }
 \description{
-Data with several measures of privacy and personality variables. For more information (e.g., the codebook with a list of all items), see https://osf.io/st7p6/.
+Data with several measures of privacy and personality variables. For more information (e.g., the codebook with a list of all items), see \href{https://osf.io/st7p6/}{https://osf.io/st7p6/}.
 }
 \examples{
 d <- td::privpers
