@@ -4,7 +4,8 @@
 \name{privpers}
 \alias{privpers}
 \title{Dataset "Privacy and Personality"}
-\format{A data frame with 296 rows and 223 variables. Answer format was a 7-point Likert scale.
+\format{
+A data frame with 296 rows and 223 variables. Answer format was a 7-point Likert scale.
 \describe{
   \item{pri_att_soc}{Privacy Attitude Societal}
   \item{pri_att_int}{Privacy Attitude Interpersonal}
@@ -43,7 +44,8 @@
   \item{job_par_2}{Job Parent 2}
   \item{inc}{Income}
   \item{inc_par}{Income Parents}
-}}
+}
+}
 \source{
 \href{https://osf.io/cqp46/}{Open Science Framework}
 }

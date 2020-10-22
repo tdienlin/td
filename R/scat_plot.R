@@ -1,5 +1,4 @@
 #' Display Data in Scatterplots
-#'
 #' @param data dataframe
 #' @export
 scat_plot <- function(data, mapping, coords, ...) {

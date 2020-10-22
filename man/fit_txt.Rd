@@ -4,9 +4,13 @@
 \alias{fit_txt}
 \title{Extract results from fitted lavaan object for display in markdown text}
 \usage{
-fit_txt(object, estimators = c("chisq", "df", "pvalue", "cfi", "rmsea",
-  "rmsea.ci.lower", "rmsea.ci.upper", "srmr"), wrmr = FALSE,
-  scaled = FALSE)
+fit_txt(
+  object,
+  estimators = c("chisq", "df", "pvalue", "cfi", "rmsea", "rmsea.ci.lower",
+    "rmsea.ci.upper", "srmr"),
+  wrmr = FALSE,
+  scaled = FALSE
+)
 }
 \arguments{
 \item{object}{fitted lavaan object}

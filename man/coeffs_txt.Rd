@@ -4,9 +4,15 @@
 \alias{coeffs_txt}
 \title{Extract text with results}
 \usage{
-coeffs_txt(object, label_effect = NULL, lhs_effect = NULL,
-  rhs_effect = NULL, indirect_effect = NULL, one_sided = FALSE,
-  std_type = "std.all")
+coeffs_txt(
+  object,
+  label_effect = NULL,
+  lhs_effect = NULL,
+  rhs_effect = NULL,
+  indirect_effect = NULL,
+  one_sided = FALSE,
+  std_type = "std.all"
+)
 }
 \arguments{
 \item{object}{fitted lavaan object}

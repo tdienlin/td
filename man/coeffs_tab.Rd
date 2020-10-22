@@ -4,9 +4,16 @@
 \alias{coeffs_tab}
 \title{Extract table of results}
 \usage{
-coeffs_tab(object, label_effect = NULL, lhs_effect = NULL,
-  rhs_effect = NULL, indirect_effect = NULL, one_sided = FALSE,
-  as_text = FALSE, std_type = "std.all")
+coeffs_tab(
+  object,
+  label_effect = NULL,
+  lhs_effect = NULL,
+  rhs_effect = NULL,
+  indirect_effect = NULL,
+  one_sided = FALSE,
+  as_text = FALSE,
+  std_type = "std.all"
+)
 }
 \arguments{
 \item{object}{fitted lavaan object}
