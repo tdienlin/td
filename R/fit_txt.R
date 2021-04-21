@@ -27,7 +27,7 @@ fit_txt <- function(object,
     estimators_new <- paste0(estimators, ".scaled")
     if(isTRUE("srmr.scaled" %in% estimators_new)) (
       estimators_new[estimators_new == "srmr.scaled"] <- "srmr_bentler"
-      )
+    )
     fit_measures <- inspect(object, what = "fit") %>% .[estimators_new] %>% 
       set_names(estimators)
   }
@@ -42,13 +42,13 @@ fit_txt <- function(object,
              round(fit_measures["df"], 0),
              ") ",
              my_round(fit_measures["chisq"], "2_txt"),
-             ", \\textit{p} ",
+             ", _p_ ",
              my_round(fit_measures["pvalue"], "p_txt"))}
     , if(isTRUE("cfi" %in% names(fit_measures[]))) {
-      paste0(", cfi ",
+      paste0(", CFI ",
              my_round(fit_measures["cfi"], "fit_txt"))}
     , if(isTRUE("rmsea" %in% names(fit_measures[]))) {
-      paste0(", rmsea ",
+      paste0(", RMSEA ",
              my_round(fit_measures["rmsea"], "fit_txt"),
              ", 90% CI [",
              my_round(fit_measures["rmsea.ci.lower"], "std"),
@@ -56,10 +56,10 @@ fit_txt <- function(object,
              my_round(fit_measures["rmsea.ci.upper"], "std"),
              "]")}
     , if(isTRUE(("srmr" %in% names(fit_measures[]) & (!isTRUE(wrmr))))) {
-      paste0(", srmr ",
+      paste0(", SRMR ",
              my_round(fit_measures["srmr"], "fit_txt"))}
     , if(isTRUE(wrmr)) {
-      paste0(", wrmr ",
+      paste0(", WRMR ",
              my_round(wrmr_est, "fit_txt"))}
   )
   return(temp)
