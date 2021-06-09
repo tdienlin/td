@@ -30,7 +30,7 @@ fit_tab <- function(object,
     measures <- c("chisq", "df", "pvalue", "cfi", 
                   "tli", "rmsea")
     fit_measures <- c(fitMeasures(object, fit.measures = measures),
-                 wrmr = as.numeric(calc_wrmr(object)))
+                      wrmr = as.numeric(calc_wrmr(object)))
   }
   
   # make as data.frame
@@ -46,11 +46,20 @@ fit_tab <- function(object,
   }
   
   if(isTRUE(reliability)) {
-    fit_measures %<>% 
-      mutate(omega = semTools::reliability(object)["alpha", "total"],
-             alpha = semTools::reliability(object)["omega", "total"],
-             ave = semTools::reliability(object)["avevar", "total"]
-             )
+    tmp <- semTools::reliability(object, return.total = TRUE)
+    if("total" %in% colnames(tmp)) {
+      fit_measures %<>% 
+        mutate(omega = tmp["omega", "total"],
+               alpha = tmp["alpha", "total"],
+               ave = tmp["avevar", "total"]
+        )
+    } else {
+      fit_measures %<>% 
+        mutate(omega = tmp["omega", 1],
+               alpha = tmp["alpha", 1],
+               ave = tmp["avevar", 1]
+        )
+    }
     
     if(isTRUE(as_text)) {
       fit_measures %<>%
